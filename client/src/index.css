@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+	.placeholder-style::placeholder {
+		padding-left: 30px;
+		color: gray;
+	}
+	.icon-hover {
+		@apply md:hover:scale-105 transition-all ease-linear duration-300 md:hover:bg-slate-900 rounded-full md:p-3;
+	}
+}
