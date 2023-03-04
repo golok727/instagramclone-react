@@ -1,11 +1,13 @@
 import React from "react";
-import Navbar from "./components/Navabr";
+import MainContent from "./components/MainContent";
+import Navbar from "./components/Navbar";
 
 const App: React.FC = () => {
 	return (
 		<div className="min-h-screen bg-black text-white relative">
 			{/* Radhey Shyam */}
 			<Navbar />
+			<MainContent />
 		</div>
 	);
 };
