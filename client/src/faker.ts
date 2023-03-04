@@ -9,6 +9,14 @@ export interface User {
 	birthdate: Date;
 	registeredAt: Date;
 }
+
+export interface Post {
+	userId: string;
+	username: string;
+	avatar: string;
+	image: string;
+}
+
 export function createRandomUser(): User {
 	return {
 		userId: faker.datatype.uuid(),
@@ -18,5 +26,18 @@ export function createRandomUser(): User {
 		password: faker.internet.password(),
 		birthdate: faker.date.birthdate(),
 		registeredAt: faker.date.past(),
+	};
+}
+
+function createImage(w: number = 1080, h: number = 1080): string {
+	return faker.image.image(w, h, true);
+}
+
+export function createRandomPost(): Post {
+	return {
+		userId: faker.datatype.uuid(),
+		username: faker.internet.userName(),
+		avatar: faker.image.avatar(),
+		image: createImage(),
 	};
 }

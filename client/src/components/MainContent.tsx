@@ -1,10 +1,9 @@
 import React from "react";
-import Stories from "./Stories";
+import Feed from "./Feed";
 const MainContent: React.FC = () => {
 	return (
-		<div className="pt-20 md:pl-36 lg:pl-80">
-			<Stories />
-
+		<div className="md:pt-10 pt-20 md:pl-36 lg:pl-80  max-w-7xl min-h-screen">
+			<Feed />
 			{/* {Main Images View } */}
 		</div>
 	);

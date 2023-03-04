@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
 
 	return (
 		<>
-			<header className="bg-black mob-header gap-4 absolute flex justify-around items-center md:hidden w-full px-6 py-5 border-b-[1px] border-neutral-800 z-10">
+			<header className="absolute bg-black mob-header gap-4  flex justify-around items-center md:hidden w-full px-6 py-5 border-b-[1px] border-neutral-800 z-10">
 				<img src={InstagramLogo} alt="" />
 				<div className="search relative flex-1 w-full">
 					<input
@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 				<AiOutlineHeart className="text-2xl icon-hover" />
 			</header>
 
-			<div className="bg-black mobile-nav absolute flex justify-between items-center md:flex-col md:left-0 md:top:0 md:h-full md:w-fit  md:border-r-[1px] border-gray-800 bottom-0 w-full lg:pl-5 lg:pr-24 md:px-6 px-8 py-3 text-2xl border-t-[1px] z-10">
+			<div className="fixed bg-black mobile-nav  flex justify-between items-center md:flex-col md:left-0 md:top:0 md:h-full md:w-fit  md:border-r-[1px] border-gray-800 bottom-0 w-full lg:pl-5 lg:pr-24 md:px-6 px-8 py-3 text-2xl border-t-[1px] z-10">
 				<div className="md:w-fit w-full flex md:flex-col md:justify-start justify-between md:text-2xl gap-5 ">
 					<AiOutlineInstagram className="mb-6 hidden md:block lg:hidden self-center" />
 					<img
