@@ -8,15 +8,17 @@ const Feed: React.FC = () => {
 	const { posts } = useContext(AppContext);
 
 	return (
-		<div className="flex-1">
+		<div className="feed pb-24">
 			<Stories />
 			<PostsWrapper>
 				{posts.map((post, idx) => (
 					<Post
 						key={idx}
 						image={post.image}
+						liked={post.liked}
 						username={post.username}
 						avatar={post.avatar}
+						description={post.description}
 					/>
 				))}
 			</PostsWrapper>

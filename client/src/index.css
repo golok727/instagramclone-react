@@ -3,6 +3,18 @@
 @tailwind components;
 
 @layer base {
+	::-webkit-scrollbar {
+		background: black;
+		width: 0.2rem;
+	}
+	::-webkit-scrollbar-thumb {
+		background: radial-gradient(
+			ellipse farthest-corner at 0 -25%,
+			#5258cf,
+			transparent 90%
+		);
+	}
+
 	.placeholder-style::placeholder {
 		padding-left: 30px;
 		color: gray;
@@ -64,5 +76,10 @@
 				#f77638 70%,
 				#fec66d 100%
 			);
+	}
+
+	.animation-stop {
+		animation-iteration-count: 1 !important;
+		animation-fill-mode: backwards;
 	}
 }

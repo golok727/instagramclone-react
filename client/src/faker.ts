@@ -15,6 +15,8 @@ export interface Post {
 	username: string;
 	avatar: string;
 	image: string;
+	liked: boolean;
+	description: string;
 }
 
 export function createRandomUser(): User {
@@ -39,5 +41,7 @@ export function createRandomPost(): Post {
 		username: faker.internet.userName(),
 		avatar: faker.image.avatar(),
 		image: createImage(),
+		liked: !Math.round(Math.random()),
+		description: faker.lorem.paragraphs(Math.floor(Math.random() * 4) + 1),
 	};
 }
