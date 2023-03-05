@@ -10,6 +10,7 @@ interface TNavBarTabs {
 	text: string;
 	isMobileVisible: boolean;
 	opensSideBar: boolean;
+	link?: string;
 }
 
 const NavBarTabs: TNavBarTabs[] = [
@@ -18,6 +19,7 @@ const NavBarTabs: TNavBarTabs[] = [
 		text: "Home",
 		isMobileVisible: true,
 		opensSideBar: false,
+		link: "/",
 	},
 
 	{
