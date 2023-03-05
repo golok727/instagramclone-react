@@ -20,7 +20,7 @@ const Post: React.FC<Props> = ({
 }) => {
 	const [showFullDesc, setShowFullDesk] = useState(false);
 	const [postLiked, setPostLiked] = useState(liked);
-
+	const [likeAnimation, setLikeAnimation] = useState(false);
 	const truncateText = (text: string, maxChar: number = 45): string => {
 		if (description.length > maxChar)
 			return text.substring(0, maxChar) + " ...";
@@ -32,7 +32,7 @@ const Post: React.FC<Props> = ({
 			{/* Header */}
 			<div className="flex items-center mb-5 ">
 				<div className="instagram-gradient rounded-full">
-					<div className="m-[.1rem] border-black border-2 overflow-hidden rounded-full w-10">
+					<div className="m-[.1rem] select-none border-black border-2 overflow-hidden rounded-full w-10">
 						<img src={avatar} alt="avatar" className="object-contain" />
 					</div>
 				</div>
@@ -40,7 +40,24 @@ const Post: React.FC<Props> = ({
 			</div>
 
 			{/* Image */}
-			<img src={image} className="object-cover" alt="" loading="lazy" />
+			<div className="relative">
+				<img
+					src={image}
+					onDoubleClick={() => {
+						setPostLiked(true);
+						setLikeAnimation(true);
+						setTimeout(() => {
+							setLikeAnimation(false);
+						}, 1000);
+					}}
+					className="object-cover cursor-pointer"
+					alt=""
+					loading="lazy"
+				/>
+				{likeAnimation && (
+					<AiFillHeart className="absolute top-1/2 left-1/2 text-[7rem] move opacity-90 ping duration-100" />
+				)}
+			</div>
 			{/* Footer */}
 
 			<div className="mb-7 mt-3 border-gray-700  border-b-[1px] p-2">
@@ -72,8 +89,8 @@ const Post: React.FC<Props> = ({
 				</div>
 
 				{/* Title and description */}
-				<div className="i-description py-3">
-					<div className="flex gap-2 items-center select-none">
+				<div className="i-description pt-2">
+					<div className="flex gap-2 items-center ">
 						<p className="text-xs leading-5">
 							<span className="font-bold text-xs pr-2">{username}</span>
 
