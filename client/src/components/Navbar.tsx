@@ -6,6 +6,7 @@ import { AiOutlineHeart, AiOutlineInstagram } from "react-icons/ai";
 import { CgMenuMotion } from "react-icons/cg";
 import InstagramLogo from "../assets/instagram.svg";
 import { NavBarTabs } from "../content";
+import NavTabItem from "./NavTabItem";
 
 const Navbar: React.FC = () => {
 	const [searchBarActive, setSearchBarActive] = useState(false);
@@ -43,16 +44,7 @@ const Navbar: React.FC = () => {
 					{/*  */}
 
 					{NavBarTabs.map((tab, idx) => (
-						<div
-							key={idx}
-							{...tab.props}
-							className={`flex cursor-pointer items-center icon-hover ${
-								!tab.isMobileVisible && "hidden md:inline-flex"
-							}`}
-						>
-							<span>{<tab.icon className="" />}</span>
-							<h3 className="text-base ml-4 hidden lg:block">{tab.text}</h3>
-						</div>
+						<NavTabItem key={idx} tab={tab} />
 					))}
 				</div>
 

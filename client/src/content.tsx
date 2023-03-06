@@ -6,7 +6,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { RiMessengerLine } from "react-icons/ri";
 import { AiOutlineHeart } from "react-icons/ai";
 
-interface TNavBarTabs {
+export interface TNavBarTabs {
 	icon: IconType;
 	text: string;
 	isMobileVisible: boolean;
@@ -22,11 +22,6 @@ const NavBarTabs: TNavBarTabs[] = [
 		isMobileVisible: true,
 		opensSideBar: false,
 		link: "/",
-		props: {
-			onClick: () => {
-				console.log("hello");
-			},
-		},
 	},
 
 	{
