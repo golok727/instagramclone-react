@@ -1,3 +1,4 @@
+import { ComponentPropsWithoutRef } from "react";
 import { IconType } from "react-icons";
 import { BiHomeAlt2, BiSearch } from "react-icons/bi";
 import { MdOutlineExplore, MdOutlinePersonalVideo } from "react-icons/md";
@@ -11,6 +12,7 @@ interface TNavBarTabs {
 	isMobileVisible: boolean;
 	opensSideBar: boolean;
 	link?: string;
+	props?: ComponentPropsWithoutRef<"div">;
 }
 
 const NavBarTabs: TNavBarTabs[] = [
@@ -20,6 +22,11 @@ const NavBarTabs: TNavBarTabs[] = [
 		isMobileVisible: true,
 		opensSideBar: false,
 		link: "/",
+		props: {
+			onClick: () => {
+				console.log("hello");
+			},
+		},
 	},
 
 	{

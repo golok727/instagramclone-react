@@ -45,6 +45,7 @@ const Navbar: React.FC = () => {
 					{NavBarTabs.map((tab, idx) => (
 						<div
 							key={idx}
+							{...tab.props}
 							className={`flex cursor-pointer items-center icon-hover ${
 								!tab.isMobileVisible && "hidden md:inline-flex"
 							}`}

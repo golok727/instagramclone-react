@@ -20,7 +20,12 @@ const router = createBrowserRouter([
 				element: <MainContent />,
 			},
 		],
-		errorElement: <ErrorPage />,
+		errorElement: (
+			<Main>
+				<Navbar />
+				<ErrorPage />
+			</Main>
+		),
 	},
 ]);
 
