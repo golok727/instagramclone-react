@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ErrorPage: React.FC = () => {
 	return (
-		<div className="lg:pl-80 pt-7  error min-w-full text-center">
+		<div className="pt-7  error min-w-full text-center">
 			<h1 className="text-2xl font-bold mb-3">
 				Sorry, this page isn't available.
 			</h1>

@@ -3,6 +3,7 @@ import MainContent from "./components/MainContent";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { SidebarProvider } from "./context/SidebarContext";
 import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
@@ -10,7 +11,9 @@ const router = createBrowserRouter([
 		path: "/",
 		element: (
 			<Main>
-				<Navbar />
+				<SidebarProvider>
+					<Navbar />
+				</SidebarProvider>
 			</Main>
 		),
 
@@ -18,11 +21,15 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <MainContent />,
+				errorElement: (
+					<Main>
+						<ErrorPage />
+					</Main>
+				),
 			},
 		],
 		errorElement: (
 			<Main>
-				<Navbar />
 				<ErrorPage />
 			</Main>
 		),

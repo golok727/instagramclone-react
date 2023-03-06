@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 
 import { AiOutlineHeart, AiOutlineInstagram } from "react-icons/ai";
@@ -7,9 +6,12 @@ import { CgMenuMotion } from "react-icons/cg";
 import InstagramLogo from "../assets/instagram.svg";
 import { NavBarTabs } from "../content";
 import NavTabItem from "./NavTabItem";
-
+import { useContext } from "react";
+import { SidebarContext } from "../context/SidebarContext";
 const Navbar: React.FC = () => {
 	const [searchBarActive, setSearchBarActive] = useState(false);
+
+	const { setMoreMenuOpen } = useContext(SidebarContext);
 
 	return (
 		<>
@@ -51,7 +53,10 @@ const Navbar: React.FC = () => {
 				{/*Hello  */}
 				{/* Profile Pic */}
 
-				<div className="flex items-center mb-12 cursor-pointer">
+				<div
+					onClick={() => setMoreMenuOpen((prev) => !prev)}
+					className="flex items-center mb-12 cursor-pointer select-none"
+				>
 					<CgMenuMotion className="hidden md:block " />
 					<h3 className="text-sm ml-2  hidden lg:block">More</h3>
 				</div>

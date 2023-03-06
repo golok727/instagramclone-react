@@ -40,7 +40,7 @@ const Post: React.FC<Props> = ({
 			</div>
 
 			{/* Image */}
-			<div className="relative">
+			<div className="relative min-w-full ">
 				<img
 					src={image}
 					onDoubleClick={() => {
@@ -50,7 +50,7 @@ const Post: React.FC<Props> = ({
 							setLikeAnimation(false);
 						}, 1000);
 					}}
-					className="object-cover cursor-pointer"
+					className="object-cover cursor-pointer w-full h-full"
 					alt=""
 					loading="lazy"
 				/>
