@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect, useCallback } from "react";
 
 type StateDispatch = React.Dispatch<React.SetStateAction<boolean>>;
 type SContext = {
@@ -6,10 +6,12 @@ type SContext = {
 	notificationsOpen: boolean;
 	createOpen: boolean;
 	moreMenuOpen: boolean;
+	sidebarOpen: boolean;
 	setSearchOpen: StateDispatch;
 	setNotificationOpen: StateDispatch;
 	setCreateOpen: StateDispatch;
 	setMoreMenuOpen: StateDispatch;
+	reset: () => void;
 };
 
 // const initialState: SContext = {
@@ -28,10 +30,34 @@ export const SidebarProvider: React.FC<{
 	const [notificationsOpen, setNotificationOpen] = useState(false);
 	const [createOpen, setCreateOpen] = useState(false);
 	const [moreMenuOpen, setMoreMenuOpen] = useState(false);
+	const [sidebarOpen, setSidebarOpen] = useState(false);
+
+	const reset = useCallback(() => {
+		setSearchOpen(false);
+		setNotificationOpen(false);
+		setMoreMenuOpen(false);
+		setCreateOpen(false);
+		// setSidebarOpen(false);
+	}, [
+		setSearchOpen,
+		setNotificationOpen,
+		setCreateOpen,
+		setMoreMenuOpen,
+		setSidebarOpen,
+	]);
+
+	useEffect(() => {
+		if (searchOpen || notificationsOpen) setSidebarOpen(true);
+		else {
+			setSidebarOpen(false);
+		}
+	}, [searchOpen, notificationsOpen, setSearchOpen, setNotificationOpen]);
 
 	return (
 		<SidebarContext.Provider
 			value={{
+				reset,
+				sidebarOpen,
 				searchOpen,
 				notificationsOpen,
 				createOpen,

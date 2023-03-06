@@ -11,8 +11,7 @@ import { SidebarContext } from "../context/SidebarContext";
 const Navbar: React.FC = () => {
 	const [searchBarActive, setSearchBarActive] = useState(false);
 
-	const { setMoreMenuOpen } = useContext(SidebarContext);
-
+	const { setMoreMenuOpen, sidebarOpen } = useContext(SidebarContext);
 	return (
 		<>
 			<header className="absolute bg-black mob-header gap-4  flex justify-around items-center md:hidden w-full px-6 py-5 border-b-[1px] border-neutral-800 z-10">
@@ -34,15 +33,25 @@ const Navbar: React.FC = () => {
 				<AiOutlineHeart className="text-2xl icon-hover" />
 			</header>
 
-			<div className="fixed bg-black mobile-nav  flex justify-between items-center md:flex-col md:left-0 md:top:0 md:h-full md:w-fit  md:border-r-[1px] border-gray-800 bottom-0 w-full lg:pl-5 lg:pr-24 md:px-6 px-8 py-3 text-2xl border-t-[1px] z-10">
+			<div
+				className={`fixed transition-all duration-200 ease-linear bg-black mobile-nav  flex justify-between items-center md:flex-col md:left-0 md:top:0 md:h-full md:w-fit  md:border-r-[1px] border-gray-800 bottom-0 w-full lg:pl-5 ${
+					sidebarOpen ? "lg:pr-2" : "lg:pr-24"
+				} md:px-6 px-8 py-3 text-2xl border-t-[1px] z-10`}
+			>
 				<div className="md:w-fit w-full flex md:flex-col md:justify-start justify-between md:text-2xl gap-5 ">
-					<AiOutlineInstagram className="mb-6 hidden md:block lg:hidden self-center" />
-					<img
-						src={InstagramLogo}
-						alt=""
-						className="hidden lg:block pl-3 mt-8"
-						width={100}
+					<AiOutlineInstagram
+						className={`mb-6 hidden md:block ${
+							sidebarOpen ? "" : "lg:hidden"
+						} self-center`}
 					/>
+					{!sidebarOpen && (
+						<img
+							src={InstagramLogo}
+							alt=""
+							className="hidden lg:block pl-3 mt-8"
+							width={100}
+						/>
+					)}
 					{/*  */}
 
 					{NavBarTabs.map((tab, idx) => (
@@ -58,7 +67,9 @@ const Navbar: React.FC = () => {
 					className="flex items-center mb-12 cursor-pointer select-none"
 				>
 					<CgMenuMotion className="hidden md:block " />
-					<h3 className="text-sm ml-2  hidden lg:block">More</h3>
+					{!sidebarOpen && (
+						<h3 className="text-sm ml-2 hidden lg:block">More</h3>
+					)}
 				</div>
 			</div>
 		</>

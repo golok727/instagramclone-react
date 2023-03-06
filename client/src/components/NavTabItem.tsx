@@ -2,18 +2,26 @@ import React from "react";
 import { TNavBarTabs } from "../content";
 import { Link } from "react-router-dom";
 
-import { useState, useContext, useCallback } from "react";
+import { useContext, useCallback } from "react";
 import { SidebarContext } from "../context/SidebarContext";
 
 const NavTabItem: React.FC<{ tab: TNavBarTabs }> = ({ tab }) => {
-	const { setSearchOpen, setCreateOpen, setNotificationOpen } =
-		useContext(SidebarContext);
+	const {
+		setSearchOpen,
+		setCreateOpen,
+		setNotificationOpen,
+		sidebarOpen,
+		reset,
+	} = useContext(SidebarContext);
 
 	const handleClick = useCallback(() => {
+		// reset();
 		if (tab.text === "Search") {
+			setNotificationOpen(false);
 			setSearchOpen((prev) => !prev);
 		}
 		if (tab.text === "Notifications") {
+			setSearchOpen(false);
 			setNotificationOpen((prev) => !prev);
 		}
 		if (tab.text === "Create") {
@@ -30,9 +38,11 @@ const NavTabItem: React.FC<{ tab: TNavBarTabs }> = ({ tab }) => {
 				}`}
 			>
 				<span>{<tab.icon className="" />}</span>
-				<h3 className="text-base ml-4 hidden lg:block select-none">
-					{tab.text}
-				</h3>
+				{!sidebarOpen && (
+					<h3 className="text-base transition-all saturate-200 ml-4 hidden lg:block select-none">
+						{tab.text}
+					</h3>
+				)}
 			</div>
 		</Link>
 	) : (
@@ -44,11 +54,11 @@ const NavTabItem: React.FC<{ tab: TNavBarTabs }> = ({ tab }) => {
 			}`}
 		>
 			<span>{<tab.icon className="" />}</span>
-			{
+			{!sidebarOpen && (
 				<h3 className="text-base ml-4 hidden lg:block select-none">
 					{tab.text}
 				</h3>
-			}
+			)}
 		</div>
 	);
 };
