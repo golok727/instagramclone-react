@@ -5,6 +5,9 @@ import Main from "./components/Main";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SidebarProvider } from "./context/SidebarContext";
 import ErrorPage from "./components/ErrorPage";
+import Messages from "./pages/messages";
+import Explore from "./pages/explore";
+import Reels from "./pages/reels";
 
 const router = createBrowserRouter([
 	{
@@ -21,18 +24,24 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <MainContent />,
-				errorElement: (
-					<Main>
-						<ErrorPage />
-					</Main>
-				),
+				errorElement: <ErrorPage />,
+			},
+			{
+				path: "/direct",
+				element: <Messages />,
+			},
+
+			{
+				path: "/reels",
+				element: <Reels />,
+			},
+
+			{
+				path: "/explore",
+				element: <Explore />,
 			},
 		],
-		errorElement: (
-			<Main>
-				<ErrorPage />
-			</Main>
-		),
+		errorElement: <ErrorPage />,
 	},
 ]);
 

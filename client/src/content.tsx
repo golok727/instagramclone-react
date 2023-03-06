@@ -33,12 +33,14 @@ const NavBarTabs: TNavBarTabs[] = [
 	{
 		icon: MdOutlineExplore,
 		text: "Explore",
+		link: "/explore",
 		isMobileVisible: true,
 		opensSideBar: false,
 	},
 	{
 		icon: MdOutlinePersonalVideo,
 		text: "Reels",
+		link: "/reels",
 		isMobileVisible: true,
 		opensSideBar: false,
 	},
@@ -48,6 +50,7 @@ const NavBarTabs: TNavBarTabs[] = [
 		text: "Messages",
 		isMobileVisible: true,
 		opensSideBar: false,
+		link: "/direct",
 	},
 	{
 		icon: AiOutlineHeart,
